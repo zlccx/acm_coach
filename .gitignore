@@ -1,0 +1,20 @@
+# Personal training data and local workspace files
+/data/
+/solutions/
+/training_history/
+/user_record.md
+/.vscode/
+/.idea/
+/tmp/
+/tests/evidence/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+# Locally supplied copyrighted reference material
+/NOI_Syllabus_Edition_2025.pdf
+/resources/noi-syllabus-2025.index.json

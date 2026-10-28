@@ -1,0 +1,12 @@
+{
+  "codeforces": {"domain": "codeforces.com", "priority": "P0", "method": "公开 problemset.problems API；官方题解需从比赛页公告定位并打开验证", "fallback": "site:codeforces.com/problemset/problem 题号；API 失败报告并退回已验证旧缓存或用户题目链接", "access": "公开 API 无登录；403/429 不绕过，单次请求无自动重试"},
+  "luogu": {"domain": "luogu.com.cn", "priority": "P0", "method": "resource-search luogu：真实 keyword 题目/文章搜索；题单当前目录页标题匹配；resource-read 解析题面/文章/原始题单", "fallback": "Chrome 站内搜索 + browser_extract.js，或 site:luogu.com.cn web search；公开 HTML context 变化立即降级", "access": "无 cookie HTTP；不导出账户、lastCode、bestRecord。题单/正文风控时不绕过"},
+  "luogu-daily": {"domain": "luogu.com.cn", "priority": "P0", "method": "resource-search luogu-daily：collection/1?keyword=...，逐篇验证 collection.id=1；resource-read 读公开文章", "fallback": "Chrome 洛谷日报合集1的搜索框，或 web search 洛谷日报+关键词；普通文章不冒充日报", "access": "仅公开正文；contentFull布尔标记独立于content正文"},
+  "oi-wiki": {"domain": "oi-wiki.org", "priority": "P0", "method": "resource-search oi-wiki：主页主导航标题匹配；resource-read：显式URL的article正文", "fallback": "Chrome 目录/站内搜索，或 site:oi-wiki.org web search；正文别名可能与目录标题不同", "access": "公开文章；导航只验证成员资格。2026-10-27 advertised search_index实测404，未实现全文索引"},
+  "acwing": {"domain": "acwing.com", "priority": "P0", "method": "resource-search acwing：公开activity课程目录；resource-read：公开introduction课程简介及知识点原顺序", "fallback": "Chrome实际全站搜索入口，或 site:acwing.com web search；不把课程目录匹配称为全站文章搜索", "access": "不复制浏览器凭据；不读取付费录像或受限打卡正文"},
+  "noi": {"domain": "noi.cn", "priority": "P1", "method": "resource-search noi：已下载PDF本地按页字面查询，校验哈希，返回物理页码；扫描页用本地GLM-OCR索引", "fallback": "原PDF对应页核对OCR；无命中尝试较宽关键词；新版本需显式重建索引", "access": "本地文件与索引，不调用云OCR，不从文件名猜版次、不自动推断知识点分级"},
+  "cp-algorithms": {"domain": "cp-algorithms.com", "priority": "P1", "method": "英文算法名与别名检索，核对实现前提和复杂度", "fallback": "官方 cp-algorithms/cp-algorithms 源码；记录提交版本", "access": "公开教程"},
+  "usaco": {"domain": "usaco.guide", "priority": "P1", "method": "按 division 和 topic 检索，保留模块路径、先修知识与关联练习原顺序", "fallback": "公开模块或官方源码；内容动态时明确未取到完整列表", "access": "公开模块；账户进度不代替本地记录"},
+  "blogs": {"domain": "luogu.com.cn", "priority": "P1", "method": "洛谷日报/作者博客，评估证明、勘误、来源；必要时扩展全网", "fallback": "搜索同主题的其他可信来源，比较结论不照抄", "access": "博客质量逐篇验证，非官方资料必须注明作者"},
+  "bilibili": {"domain": "bilibili.com", "priority": "P2", "method": "公开搜索课程入口、作者、集数；摘要只基于实际可访问描述", "fallback": "普通网页检索真实视频链接；未看视频不能声称看过内容", "access": "不默认自动转写、不绕过登录"}
+}
